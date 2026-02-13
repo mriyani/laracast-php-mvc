@@ -6,14 +6,19 @@ class Database
     public $connection;
 
     // Connect to the MySQL database
-    public function __construct()
+    public function __construct($config, $username = 'root', $password = '')
     {
+
+        // Declare the Data Source Name (DSN)
+        $dsn = 'mysql:' . http_build_query($config, '', ';');
+
         try {
-            // Declare the Data Source Name (DSN)
-            $dsn = 'mysql:host=localhost;dbname=myapp;charset=utf8mb4';
 
             // Create a new PDO instance connecting to the database
-            $this->connection = new PDO($dsn, 'root', '');
+            $this->connection = new PDO($dsn, $username, $password, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ]);
         } catch (PDOException $e) {
             echo 'Connection failed: ' . $e->getMessage();
             exit;

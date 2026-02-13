@@ -1,15 +1,18 @@
 <?php
 
 require 'functions.php';
+// require 'router.php';
 require 'Database.php';
 
+$config = require 'config.php';
+
 // Create database instance 
-$db = new Database();
+$db = new Database($config['database']);
 
 // Fetch all posts from database
-$posts = $db->query('SELECT * FROM posts')->fetchAll(PDO::FETCH_ASSOC);
+$posts = $db->query('SELECT * FROM posts')->fetchAll();
 
-// dd($posts);
+dd($posts);
 
 // Display the posts
 foreach ($posts as $post) {
