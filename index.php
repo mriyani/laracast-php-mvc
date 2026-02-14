@@ -9,8 +9,12 @@ $config = require 'config.php';
 // Create database instance 
 $db = new Database($config['database']);
 
+$id = $_GET['id'];
+
+$query = "SELECT * FROM users WHERE id = ?";
+
 // Fetch all posts from database
-$posts = $db->query('SELECT * FROM posts')->fetchAll();
+$posts = $db->query($query, [$id])->fetch();
 
 dd($posts);
 

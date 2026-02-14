@@ -26,12 +26,13 @@ class Database
     }
 
     // Fetch data from the database
-    public function query($query)
+    public function query($query, $params)
     {
         try {
             // Prepare and execute a SQL query to fetch data
             $stmt = $this->connection->prepare($query);
-            $stmt->execute();
+
+            $stmt->execute($params);
 
             // Fetch all results as an associative array
             return $stmt;
