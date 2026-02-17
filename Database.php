@@ -4,6 +4,7 @@
 class Database
 {
     public $connection;
+    public $statement;
 
     // Connect to the MySQL database
     public function __construct($config, $username = 'root', $password = '')
@@ -30,15 +31,36 @@ class Database
     {
         try {
             // Prepare and execute a SQL query to fetch data
-            $stmt = $this->connection->prepare($query);
+            $this->statement = $this->connection->prepare($query);
 
-            $stmt->execute($params);
+            $this->statement->execute($params);
 
             // Fetch all results as an associative array
-            return $stmt;
+            return $this;
         } catch (PDOException $e) {
             echo 'Query failed: ' . $e->getMessage();
             exit;
         }
+    }
+
+    // Fetch single row
+    public function find()
+    {
+        return $this->statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Fetch all rows
+    public function getAll()
+    {
+        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findOrFail()
+    {
+        $result = $this->find();
+        if (! $result) {
+            abort();
+        }
+        return $result;
     }
 };
