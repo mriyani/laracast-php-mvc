@@ -1,16 +1,10 @@
 <?php
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$routes = require 'routes.php';
 
 // dd($uri);
 
-$routes = [
-    '/'        => 'controllers/index.php',
-    '/about'   => 'controllers/about.php',
-    '/notes'   => 'controllers/notes.php',
-    '/note'    => 'controllers/note.php',
-    '/contact' => 'controllers/contact.php',
-];
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 function routeToControllers($uri, $routes)
 {

@@ -10,7 +10,7 @@
         </p>
         <hr>
         <p class="mt-2">
-            <?= $note['body'] ?>
+            <?= htmlspecialchars($note['body']) ?>
         </p>
     </div>
 </main>
