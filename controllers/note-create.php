@@ -9,7 +9,7 @@ $db = new Database($config['database']);
 
 $heading = 'Create Note';
 
-// dd(Validator::email('email@example', 'Note body')); // Example of email validation (will fail)
+// dd(Validator::email('email@.com', 'Note body')); // Example of email validation (will fail)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

@@ -4,11 +4,10 @@ class Validator
 {
     public static function string($value, int $min = 1, ?int $max = null, string $field = ''): ?string
     {
-        $value = trim((string) $value);
 
-        // Required check (empty after trim)
-        if (strlen($value) === 0) {
-            return self::formatError($field, 'is required.');
+        // Trim and check if empty string
+        if ($error = self::emptyString($value, $field)) {
+            return $error;
         }
 
         // Minimum length
@@ -27,11 +26,10 @@ class Validator
 
     public static function email(mixed $value, string $field = ''): ?string
     {
-        $value = trim((string) $value);
 
-        // Required check
-        if (strlen($value) === 0) {
-            return self::formatError($field, 'is required.');
+        // Trim and check if empty string
+        if ($error = self::emptyString($value, $field)) {
+            return $error;
         }
 
         // Email format validation
@@ -41,6 +39,15 @@ class Validator
 
         return null; // Valid
 
+    }
+
+    // Checks if a value is present and not just whitespace, returns error message if invalid
+    private static function emptyString(mixed $value, string $field): ?string
+    {
+        $value = trim((string) $value);
+        return $value === ''
+            ? self::formatError($field, 'is required.')
+            : null;
     }
 
     // Helper for consistent error messages
