@@ -1,12 +1,13 @@
 <?php
 
-$config = require 'config.php';
+$config = require basePath('config.php');
 
 // Create database instance 
 $db = new Database($config['database']);
 
-$heading = 'My Notes';
-
 $notes = $db->query('SELECT * FROM notes WHERE user_id = 1', [])->getAll();
 
-require 'views/notes/index.view.php';
+view('notes/index.view.php', [
+    'heading' => 'My Notes',
+    'notes' => $notes
+]);

@@ -1,0 +1,12 @@
+<?php
+
+// Define the base path to the application project directory (LARACAST-PHP-MVC) because the current root directory is public/index.php
+const BASE_PATH = __DIR__ . '/../';
+
+require BASE_PATH . 'functions.php';
+
+spl_autoload_register(function ($class) {
+    require basePath("Core/{$class}.php");
+});
+
+require basePath('router.php');

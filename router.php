@@ -1,6 +1,6 @@
 <?php
 
-$routes = require 'routes.php';
+$routes = require basePath('routes.php');
 
 // dd($uri);
 
@@ -18,7 +18,7 @@ function routeToControllers($uri, $routes)
 function abort($code = Response::HTTP_NOT_FOUND)
 {
     http_response_code($code);
-    require "views/{$code}.php";
+    require basePath("views/{$code}.php");
     die();
 }
 

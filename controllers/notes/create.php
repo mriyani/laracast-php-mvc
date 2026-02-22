@@ -1,19 +1,16 @@
 <?php
 
-require 'Validator.php';
-
-$config = require 'config.php';
+$config = require basePath('config.php');
 
 // Create database instance 
 $db = new Database($config['database']);
 
-$heading = 'Create Note';
-
 // dd(Validator::email('email@.com', 'Note body')); // Example of email validation (will fail)
+
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $errors = [];
 
     // Single call handles required + min/max length
     if ($error = Validator::string($_POST['body'] ?? '', 10, 255, 'Note body')) {
@@ -30,4 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require 'views/notes/create.view.php';
+view('notes/create.view.php', [
+    'heading' => 'Create Note',
+    'errors' => $errors
+]);
