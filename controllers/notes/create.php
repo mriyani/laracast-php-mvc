@@ -14,7 +14,6 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
     // Single call handles required + min/max length
     if ($error = Validator::string($_POST['body'] ?? '', 10, 255, 'Note body')) {
         $errors['body'] = $error;
