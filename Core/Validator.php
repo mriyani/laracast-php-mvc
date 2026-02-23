@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Validator
 {
     public static function string($value, int $min = 1, ?int $max = null, string $field = ''): ?string

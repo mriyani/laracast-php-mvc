@@ -1,15 +1,15 @@
 <?php
 
-$routes = require basePath('routes.php');
+use Core\Response;
 
-// dd($uri);
+$routes = require basePath('routes.php');
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 function routeToControllers($uri, $routes)
 {
     if (array_key_exists($uri, $routes)) {
-        require $routes[$uri];
+        require basePath($routes[$uri]);
     } else {
         abort();
     }

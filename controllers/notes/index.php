@@ -1,5 +1,7 @@
 <?php
 
+use Core\Database;
+
 $config = require basePath('config.php');
 
 // Create database instance 
