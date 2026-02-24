@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use Core\Response;
-
 class Router
 {
     protected $routes = [];
@@ -53,13 +51,6 @@ class Router
             }
         }
 
-        $this->abort();
-    }
-
-    protected function abort($code = Response::HTTP_NOT_FOUND)
-    {
-        http_response_code($code);
-        require basePath("views/{$code}.php");
-        die(); // Stop further execution after aborting
+        abort();
     }
 }

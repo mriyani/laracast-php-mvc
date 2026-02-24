@@ -22,8 +22,8 @@ $routes = require basePath('routes.php');
 // Get the current request URI and HTTP method from the server variables
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-// Get the HTTP method (GET, POST, DELETE, etc.) from the server variables
-$method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
+// Grab the HTTP method (GET, POST, DELETE, etc.) from the server variables
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 // Route the incoming request to the appropriate controller based on the URI and HTTP method
 $router->route($uri, $method);
