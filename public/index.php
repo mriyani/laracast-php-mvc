@@ -13,6 +13,8 @@ spl_autoload_register(function ($class) {
     require basePath("{$class}.php");
 });
 
+require basePath('bootstrap.php');
+
 // Create a new Router instance
 $router = new Router();
 

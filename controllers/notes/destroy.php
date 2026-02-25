@@ -1,11 +1,10 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require basePath('config.php');
-
-// Create database instance 
-$db = new Database($config['database']);
+// Connect to Database
+$db = App::resolve(Database::class);
 
 $currentUserId = 1; // Simulating a logged-in user with ID 1
 
