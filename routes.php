@@ -15,3 +15,6 @@ $router->patch('/note', 'controllers/notes/update.php'); // Patch a single note
 
 $router->get('/note/create', 'controllers/notes/create.php'); // New form
 $router->post('/note', 'controllers/notes/store.php'); // Create a new note
+
+$router->get('/register', 'controllers/registration/create.php'); // Registration from
+$router->post('/register', 'controllers/registration/store.php'); // Register

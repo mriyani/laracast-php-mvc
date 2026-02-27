@@ -17,9 +17,14 @@
             </div>
             <div class="flex items-center justify-left  gap-x-4 mt-4">
                 <!-- <div class="bg-gray-50 px-4 py-3 text-left sm:px-6 flex gap-x-4 justify-end"> -->
-                <a href="/notes" class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">Cancel</a>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">Update</button>
+                <a href="/notes" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">Cancel</a>
+                <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">Update</button>
+                <button type="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline" onclick="document.querySelector('#delete-form').submit()">Delete</button>
             </div>
+        </form>
+        <form id="delete-form" class="hidden" method="POST" action="/note">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="id" value="<?= $note['id'] ?>">
         </form>
     </div>
 </main>
