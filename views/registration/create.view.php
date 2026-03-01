@@ -3,7 +3,7 @@
 <?php require basePath('views/partials/banner.php'); ?>
 
 <main>
-    <div class="bg-gray-800 mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 rounded-3xl">
+    <div class="bg-gray-800 mx-auto max-w-xl px-4 py-6 sm:px-6 lg:px-8 rounded-3xl">
         <div class="flex min-h-auto flex-col justify-center px-6 py-12 lg:px-8">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                 <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="mx-auto h-10 w-auto" />

@@ -9,19 +9,19 @@ $password = $_POST['password'];
 
 // validate the form input.
 $errors = [];
-if (Validator::email($email)) {
-    $errors['email'] = 'Please provide a valid email address';
+if ($error = Validator::email($email, 'email')) {
+    $errors['email'] = $error;
 }
 
-if (Validator::string($password, 3, 12)) {
-    $errors['password'] = 'Please provide a password of at least 3 characters';
+if ($error = Validator::string($password, 3, 4, 'password')) {
+    $errors['password'] = $error;
 }
 
 if (! empty($errors)) {
     return view('registration/create.view.php', [
         'errors' => $errors,
         'heading' => 'User Registration',
-        'email' => $email
+        'email' => $email ?? ''
     ]);
 }
 
