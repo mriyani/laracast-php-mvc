@@ -38,7 +38,7 @@ if ($user) {
     // if no, save the new registration and log in the user and redirect
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
     // mark that user has logged in 
@@ -47,6 +47,6 @@ if ($user) {
     ];
 
     // redirect
-    header('Location: /notes');
+    header('Location: /');
     exit();
 }
