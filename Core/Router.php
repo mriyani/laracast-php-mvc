@@ -65,13 +65,6 @@ class Router
                 return require basePath($route['controller']);
             }
         }
-        $this->abort();
-    }
-
-    protected function abort($code = Response::HTTP_NOT_FOUND)
-    {
-        http_response_code($code);
-        require basePath("views/{$code}.php");
-        exit();
+        abort();
     }
 }

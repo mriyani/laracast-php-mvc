@@ -39,3 +39,21 @@ function view($path, $attributes = []): void
     extract($attributes);
     require basePath('views/' . $path);
 }
+
+function login($user): void
+{
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+
+    session_regenerate_id(true);
+}
+
+function logout(): void
+{
+    $_SESSION = [];
+    session_destroy();
+
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+}

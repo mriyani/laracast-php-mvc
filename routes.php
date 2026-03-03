@@ -17,4 +17,8 @@ $router->get('/note/create', 'controllers/notes/create.php'); // New form
 $router->post('/note', 'controllers/notes/store.php'); // Create a new note
 
 $router->get('/register', 'controllers/registration/create.php')->only('guest'); // Registration from
-$router->post('/register', 'controllers/registration/store.php'); // Register
+$router->post('/register', 'controllers/registration/store.php')->only('guest'); // Register
+
+$router->get('/login', 'controllers/session/create.php')->only('guest'); // Registration from
+$router->post('/session', 'controllers/session/store.php')->only('guest'); // Registration from
+$router->delete('/session', 'controllers/session/destroy.php')->only('auth'); // Logout

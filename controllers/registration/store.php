@@ -6,6 +6,7 @@ use Core\Validator;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+$db = App::resolve(Database::class);
 
 // validate the form input.
 $errors = [];
@@ -25,8 +26,6 @@ if (! empty($errors)) {
     ]);
 }
 
-$db = App::resolve(Database::class);
-
 // check if account exist
 $user = $db->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->find();
 
@@ -42,9 +41,7 @@ if ($user) {
     ]);
 
     // mark that user has logged in 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login($user);
 
     // redirect
     header('Location: /');
