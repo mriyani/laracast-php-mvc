@@ -1,24 +1,24 @@
 <?php
 
 // Main routes
-$router->get('/', 'controllers/index.php');
-$router->get('/about', 'controllers/about.php');
-$router->get('/contact', 'controllers/contact.php');
+$router->get('/', 'index.php');
+$router->get('/about', 'about.php');
+$router->get('/contact', 'contact.php');
 
 // Notes routes
-$router->get('/notes', 'controllers/notes/index.php')->only('auth'); // List all notes
-$router->get('/note', 'controllers/notes/show.php'); // Show a single note
-$router->delete('/note', 'controllers/notes/destroy.php'); // Delete a note
+$router->get('/notes', 'notes/index.php')->only('auth'); // List all notes
+$router->get('/note', 'notes/show.php'); // Show a single note
+$router->delete('/note', 'notes/destroy.php'); // Delete a note
 
-$router->get('/note/edit', 'controllers/notes/edit.php'); // Edit form
-$router->patch('/note', 'controllers/notes/update.php'); // Patch a single note
+$router->get('/note/edit', 'notes/edit.php'); // Edit form
+$router->patch('/note', 'notes/update.php'); // Patch a single note
 
-$router->get('/note/create', 'controllers/notes/create.php'); // New form
-$router->post('/note', 'controllers/notes/store.php'); // Create a new note
+$router->get('/note/create', 'notes/create.php'); // New form
+$router->post('/note', 'notes/store.php'); // Create a new note
 
-$router->get('/register', 'controllers/registration/create.php')->only('guest'); // Registration from
-$router->post('/register', 'controllers/registration/store.php')->only('guest'); // Register
+$router->get('/register', 'registration/create.php')->only('guest'); // Registration from
+$router->post('/register', 'registration/store.php')->only('guest'); // Register
 
-$router->get('/login', 'controllers/session/create.php')->only('guest'); // Registration from
-$router->post('/session', 'controllers/session/store.php')->only('guest'); // Registration from
-$router->delete('/session', 'controllers/session/destroy.php')->only('auth'); // Logout
+$router->get('/login', 'session/create.php')->only('guest'); // Registration from
+$router->post('/session', 'session/store.php')->only('guest'); // Registration from
+$router->delete('/session', 'session/destroy.php')->only('auth'); // Logout
