@@ -17,5 +17,4 @@ authorize($note['user_id'] === $currentUserId);
 // Form was submitted, delete the current note
 $db->query('DELETE FROM notes WHERE id = :id', ['id' => $postId]);
 
-header('Location: /notes');
-exit();
+redirect('/notes');

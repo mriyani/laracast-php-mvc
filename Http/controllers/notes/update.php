@@ -39,5 +39,4 @@ $db->query(
 );
 
 // redirect the user
-header('Location: /notes');
-die;
+redirect('/notes');

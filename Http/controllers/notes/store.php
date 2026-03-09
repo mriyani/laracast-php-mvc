@@ -25,6 +25,5 @@ if (empty($errors)) {
         'body' => trim($_POST['body']),
         'user_id' => 1
     ]);
-    header('Location: /notes');
-    exit;
+    redirect('/notes');
 }

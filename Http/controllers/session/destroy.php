@@ -3,5 +3,5 @@
 // logout the user
 logout();
 
-header('Location: /');
-exit;
+// Redirect to the home page after logging out.
+redirect('/');

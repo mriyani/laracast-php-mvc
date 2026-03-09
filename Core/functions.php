@@ -40,6 +40,12 @@ function view($path, $attributes = []): void
     require basePath('views/' . $path);
 }
 
+function redirect($path): void
+{
+    header("Location: {$path}");
+    exit();
+}
+
 function login($user): void
 {
     $_SESSION['user'] = [

@@ -9,8 +9,6 @@ class LoginForm
     protected $errors = [];
     public function validate($email, $password)
     {
-        $errors = [];
-
         if (Validator::email($email, 'email')) {
             $this->errors['email'] = 'Please provide a valid email address.';
         }
